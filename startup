@@ -1,3 +1,6 @@
+oldPE = os.pullEvent
+os.pullEvent = os.pullEventRaw
+newPE = os.pullEventRaw
 oldC = term.clear
 term.clear = function () oldC(); term.setCursorPos(1,1); end
 term.clear()
@@ -12,5 +15,8 @@ while true do
 changecolor(colors.white)
 write("> ")
 input = read()
+os.pullEvent = oldPE
+if input == "exit" then term.clear = oldC; changecolor = nil; os.pullEvent = oldPE; oldPE = nil; newPE = nil; break end
 shell.run(input)
+os.pullEvent = newPE
 end
