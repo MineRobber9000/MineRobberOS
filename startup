@@ -1,0 +1,22 @@
+shell.run("usr/bin/easy-shell execute")
+oldC = term.clear
+term.clear = function () oldC(); term.setCursorPos(1,1); end
+term.clear()
+function stext(text)
+  term.clear()
+  x, y = term.getSize()
+  x = x / 2
+  y = y / 2
+  len = text:len() / 2
+  y = y - len
+  term.setCursorPos(x,y)
+  print(text)
+  return true
+end
+stext("Welcome to MineRobberOS")
+sleep(3)
+while true do
+write(">")
+input = read()
+shell.run(input)
+end
