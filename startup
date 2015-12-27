@@ -1,4 +1,3 @@
-shell.run("usr/bin/easy-shell execute")
 oldC = term.clear
 term.clear = function () oldC(); term.setCursorPos(1,1); end
 term.clear()
