@@ -1,22 +1,15 @@
 oldC = term.clear
 term.clear = function () oldC(); term.setCursorPos(1,1); end
 term.clear()
-function stext(text)
-  term.clear()
-  x, y = term.getSize()
-  x = x / 2
-  y = y / 2
-  len = text:len() / 2
-  y = y - len
-  term.setCursorPos(x,y)
-  print(text)
-  return true
+function changecolor(color)
+if term.isColor() then
+  term.setTextColor(color)
 end
-stext("Welcome to MineRobberOS")
-sleep(3)
-term.clear()
+end
+changecolor(colors.yellow)
 print("MineRobberOS")
 while true do
+changecolor(colors.white)
 write(">")
 input = read()
 shell.run(input)
