@@ -10,7 +10,7 @@ changecolor(colors.yellow)
 print("MineRobberOS")
 while true do
 changecolor(colors.white)
-write(">")
+write("> ")
 input = read()
 shell.run(input)
 end
