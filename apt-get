@@ -20,6 +20,7 @@ if tArgs[i] == "update" then
 update = true
 end
 end
+end
 
 if update or not fs.exists("pkg/packlist") then
   h = http.get("https://raw.githubusercontent.com/MineRobber9000/MineRobberOS/master/packlist")
