@@ -4,7 +4,7 @@ newPE = os.pullEventRaw
 oldC = term.clear
 term.clear = function () oldC(); term.setCursorPos(1,1); end
 term.clear()
-function changecolor(color)
+local function changecolor(color)
 if term.isColor() then
   term.setTextColor(color)
 end
