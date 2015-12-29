@@ -1,0 +1,45 @@
+tArgs = {}
+install = false
+update = false
+
+if #tArgs > 3 then
+print("Usage: apt-get <install, update> [package]")
+error()
+else
+if not tArgs then
+print("Usage: apt-get <install, update> [package]")
+error()
+end
+end
+
+for i=1,#tArgs do
+if tArgs[i] == "install" then
+install = true
+else
+if tArgs[i] == "update" then
+update = true
+end
+end
+
+if update or not fs.exists("pkg/packlist") then
+  h = http.get("https://raw.githubusercontent.com/MineRobber9000/MineRobberOS/master/packlist")
+  h2 = fs.open("pkg/packlist", "w")
+  h2.write(h.readAll())
+  h2.close()
+  h.close()
+end
+
+if install then
+  h = fs.open("pkg/packlist", "r")
+  packages = textutils.serialize(tostring(h.readAll()))
+  h.close()
+  for i=1,#packages do
+    tmp = packages[i]
+    if tmp["name"] == tArgs[3] then
+      lst = "pastebin run " + tmp["id"]
+      shell.run("lst")
+    end
+  end
+end
+
+print("Finished!")
