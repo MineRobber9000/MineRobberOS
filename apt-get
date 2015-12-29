@@ -36,7 +36,7 @@ if install then
   for i=1,#packages do
     tmp = packages[i]
     if tmp["name"] == tArgs[3] then
-      lst = "pastebin run " + tmp["id"]
+    lst = "pastebin get " .. tmp["id"] .. tmp["name"]
       shell.run("lst")
     end
   end
